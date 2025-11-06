@@ -16,24 +16,44 @@ tiene 3 areas:
     *** import numeros.py en principal.py
 
 """
-from numeros import turno_decorador, turno_generador
+# opcion = ''
+# while opcion != 'S':
+#     print('*******************')
+#     print('TURNOS FARMACIA SOL')
+#     print('Opciones:')
+#     print('[P] Perfumeria\n[F] Farmacia\n[C] Cosmeticos\n[S] Salir')
+#     opcion = input('Seleccione la opción para generar su turno: ').upper()
+
+import numeros
+
+def preguntar():
+
+    print("Bienvenidos a Farmacia Python")
+
+    while True:
+        print('[P] - Perfumeria\n[F] - Farmacia\n[C] - Cosmetica')
+        try:
+            mi_rubro = input('Elija su rubro: ').upper()
+            ["P","F","C"].index(mi_rubro) #si lo que elije el usuario no es algo de esa lista mandara error
+        except ValueError:
+            print("Esa no es una opcion valida")
+        else:
+            break
+    numeros.decorador(mi_rubro)
 
 
-def main():
-    opcion = '0'
-    while opcion != '4':
-        print('*******************')
-        print('TURNOS FARMACIA SOL')
-        print('Opciones:')
-        print('[1] Perfumeria\n[2] Farmacia\n[3] Cosmeticos\n[4] Salir')
-        opcion = input('Seleccione la opción para generar su turno: ')
+def inicio():
 
-        if opcion == '1':
-            pass
-        elif opcion == '2':
-            pass
-        elif opcion == '3':
-            pass
+    while True:
+        preguntar()
+        try:
+            otro_turno = input("Quieres sacar otro turno? [S] [N]: ").upper()
+            ["S","N"].index(otro_turno)
+        except ValueError:
+            print("Esa no es una opcion valida")
+        else:
+            if otro_turno == "N":
+                print("Gracias por su visita")
+                break
 
-
-main()
+inicio()
